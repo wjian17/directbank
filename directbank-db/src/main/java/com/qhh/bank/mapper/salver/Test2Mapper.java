@@ -1,9 +1,10 @@
-package com.qhh.bank.mapper;
+package com.qhh.bank.mapper.salver;
 
-import com.qhh.bank.mapper.salver.SalverMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 @Mapper
+@Component
 public interface Test2Mapper extends SalverMapper {
 
     String queryById();

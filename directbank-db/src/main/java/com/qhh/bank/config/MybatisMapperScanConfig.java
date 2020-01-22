@@ -22,24 +22,24 @@ public class MybatisMapperScanConfig {
     private String salverBasePackage;
 
     @Bean(name="masterMapperScannerConfigurer")
-    @ConditionalOnBean(name = "masterSqlSessionTemplate" )
+//    @ConditionalOnBean(name = "salverTransactionManager" )
     public MapperScannerConfigurer masterMapperScannerConfigurer() {
         logger.info("masterMapperScannerConfigurer加载完毕！");
         MapperScannerConfigurer readMapperScannerConfigurer = new MapperScannerConfigurer();
         readMapperScannerConfigurer.setSqlSessionFactoryBeanName("masterSqlSessionFactory");
-        readMapperScannerConfigurer.setBasePackage(masterBasePackage);
+        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper.master");
         readMapperScannerConfigurer.setMarkerInterface(MasterMapper.class);
         readMapperScannerConfigurer.setSqlSessionTemplateBeanName("masterSqlSessionTemplate");
         return readMapperScannerConfigurer;
     }
 
     @Bean(name="SalverMapperScannerConfigurer")
-    @ConditionalOnBean(name = "salverSqlSessionTemplate" )
+//    @ConditionalOnBean(name = "salverTransactionManager" )
     public MapperScannerConfigurer SalverMapperScannerConfigurer() {
         logger.info("SalverMapperScannerConfigurer加载完毕！");
         MapperScannerConfigurer readMapperScannerConfigurer = new MapperScannerConfigurer();
         readMapperScannerConfigurer.setSqlSessionFactoryBeanName("salverSqlSessionFactory");
-        readMapperScannerConfigurer.setBasePackage(salverBasePackage);
+        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper.salver");
         readMapperScannerConfigurer.setMarkerInterface(SalverMapper.class);
         readMapperScannerConfigurer.setSqlSessionTemplateBeanName("salverSqlSessionTemplate");
         return readMapperScannerConfigurer;

@@ -16,9 +16,9 @@ import javax.sql.DataSource;
  * Created by home on 2020/1/17.
  */
 @Configuration
-public class MyBatisDataSourceConfig {
+public class MybatisDataSourceConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(MyBatisDataSourceConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(MybatisDataSourceConfig.class);
 
     @Bean(name = "mhikariConfig")
     @ConfigurationProperties(prefix = "spring.datasource.master")

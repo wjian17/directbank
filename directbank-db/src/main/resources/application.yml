@@ -4,8 +4,10 @@ mybatis:
   config: classpath:mybatis-config.xml
   master:
     mapperLocations: classpath*:mapper/master/*.xml
+    basePackage: com.qhh.bank.mapper
   salver:
     mapperLocations: classpath*:mapper/salver/*.xml
+    basePackage: com.qhh.bank.mapper
 
 logback:
   #非开发环境是否开启控制台日志

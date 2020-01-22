@@ -3,8 +3,8 @@
 
     <!--<include resource="org/springframework/boot/logging/logback/base.mapper.mapper.mapper" />-->
 
-    <contextName>biometrics-aibee-face</contextName>
-    <property name="LOG_HOME" value="${LOG_HOME:-/biometrics-data/logs/springcloud-wj-shiro}" />
+    <contextName>directbank-db</contextName>
+    <property name="LOG_HOME" value="${LOG_HOME:-/biometrics-data/logs/directbank-db}" />
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!-- Log message format -->
@@ -68,7 +68,7 @@
         </filter>
     </appender>
 
-    <logger name="knowledge.accumulation.springcloud" level="INFO">
+    <logger name="com.qhh.bank" level="INFO">
         <appender-ref ref="infoDailyRollingFile" />
         <appender-ref ref="severeDailyRollingFile" />
     </logger>
@@ -82,8 +82,6 @@
     <!-- spring扩展，分环境配置log信息 -->
     <springProfile name="dev">
 
-        <!-- <logger name="sand.dao" level="DEBUG"/> -->
-        <!-- <logger name="org.springframework.web" level="INFO"/> -->
         <logger name="org.springboot.sample" level="TRACE" />
         <logger name="org.springframework.cloud" level="INFO" />
         <logger name="com.netflix" level="INFO"></logger>

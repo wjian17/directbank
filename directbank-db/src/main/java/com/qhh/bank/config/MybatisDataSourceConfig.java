@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,12 @@ public class MybatisDataSourceConfig {
 
     private static Logger logger = LoggerFactory.getLogger(MybatisDataSourceConfig.class);
 
+    @Value("${mybatis.master.basePackage}")
+    private String masterBasePackage;
+
+    @Value("${mybatis.salver.basePackage}")
+    private String salverBasePackage;
+
     @Bean(name = "mhikariConfig")
     @ConfigurationProperties(prefix = "spring.datasource.master")
     public HikariConfig mhikariConfig() {
@@ -29,6 +36,7 @@ public class MybatisDataSourceConfig {
     @Primary
     @Bean(name = "masterDataSource")
     public DataSource masterDataSource(@Qualifier("mhikariConfig")HikariConfig mhikariConfig) {
+        logger.debug("主数据源加载完毕！");
         setHikariconfigProperties(mhikariConfig);
         return new HikariDataSource(mhikariConfig);
     }
@@ -41,6 +49,7 @@ public class MybatisDataSourceConfig {
 
     @Bean(name = "salverDataSource")
     public DataSource slaveDataSource(@Qualifier("shikariConfig")HikariConfig shikariConfig) {
+        logger.debug("从数据源加载完毕！");
         setHikariconfigProperties(shikariConfig);
         return new HikariDataSource(shikariConfig);
     }

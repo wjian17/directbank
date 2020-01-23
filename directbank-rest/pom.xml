@@ -6,7 +6,7 @@
 
     <groupId>com.qhh.bank</groupId>
     <artifactId>directbank-rest</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>directbank-rest</name>
     <!-- FIXME change it to the project's website -->
@@ -15,7 +15,7 @@
     <parent>
         <groupId>com.qhh.bank</groupId>
         <artifactId>directbank</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -25,10 +25,23 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.qhh.bank</groupId>
+            <artifactId>directbank-db</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.qhh.bank</groupId>
+            <artifactId>directbank-domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
 </project>

@@ -1,12 +1,11 @@
 package com.qhh.bank.config;
 
-import com.qhh.bank.mapper.master.MasterMapper;
-import com.qhh.bank.mapper.salver.SalverMapper;
+import com.qhh.bank.mapper.MasterMapper;
+import com.qhh.bank.mapper.SalverMapper;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +26,7 @@ public class MybatisMapperScanConfig {
         logger.info("masterMapperScannerConfigurer加载完毕！");
         MapperScannerConfigurer readMapperScannerConfigurer = new MapperScannerConfigurer();
         readMapperScannerConfigurer.setSqlSessionFactoryBeanName("masterSqlSessionFactory");
-        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper.master");
+        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper");
         readMapperScannerConfigurer.setMarkerInterface(MasterMapper.class);
         readMapperScannerConfigurer.setSqlSessionTemplateBeanName("masterSqlSessionTemplate");
         return readMapperScannerConfigurer;
@@ -39,7 +38,7 @@ public class MybatisMapperScanConfig {
         logger.info("SalverMapperScannerConfigurer加载完毕！");
         MapperScannerConfigurer readMapperScannerConfigurer = new MapperScannerConfigurer();
         readMapperScannerConfigurer.setSqlSessionFactoryBeanName("salverSqlSessionFactory");
-        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper.salver");
+        readMapperScannerConfigurer.setBasePackage("com.qhh.bank.mapper");
         readMapperScannerConfigurer.setMarkerInterface(SalverMapper.class);
         readMapperScannerConfigurer.setSqlSessionTemplateBeanName("salverSqlSessionTemplate");
         return readMapperScannerConfigurer;

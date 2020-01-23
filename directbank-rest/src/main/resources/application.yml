@@ -1,18 +1,27 @@
 server:
-  port: 8087
-
+  port: 8080
+  servlet:
+    context-path: /directbank
 spring:
   application:
-    name: user-service # 应用名称
+    name: directbank # 应用名称
   active:
     profile: dev
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/mydb01
-#    username: root
-#    password: 123
-#    hikari:
-#      maximum-pool-size: 20
-#      minimum-idle: 10
+## 数据源配置
+  datasource:
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      username: root
+      password: root
+    salver:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/sys?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      username: root
+      password: root
+
 
 #mybatis:
 #  type-aliases-package: com.leyou.userservice.pojo
@@ -25,6 +34,18 @@ eureka:
     prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
     ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
 
+
+## Mybatis 配置（持久层框架自己选择）
+mybatis:
+  config: classpath:mybatis-config.xml
+  master:
+    mapperLocations: classpath*:mapper/master/*.xml
+    basePackage: com.qhh.bank.mapper
+  salver:
+    mapperLocations: classpath*:mapper/salver/*.xml
+    basePackage: com.qhh.bank.mapper
+
 logging:
-  config: logback-${spring.active.profile}.xml
-  level: debug
+  config: classpath:logback.xml
+  level:
+    com.qhh.bank: debug

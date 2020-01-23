@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qhh.bank.mapper.HelloWorldPojoMapper">
+  <resultMap id="BaseResultMap" type="com.qhh.bank.domain.pojo.HelloWorldPojo">
+    <id column="flow_no" jdbcType="VARCHAR" property="flowNo" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    flow_no, key, value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ep_hello_world
+    where flow_no = #{flowNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ep_hello_world
+    where flow_no = #{flowNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qhh.bank.domain.pojo.HelloWorldPojo">
+    insert into ep_hello_world (flow_no, key, value
+      )
+    values (#{flowNo,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.qhh.bank.domain.pojo.HelloWorldPojo">
+    insert into ep_hello_world
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="flowNo != null">
+        flow_no,
+      </if>
+      <if test="key != null">
+        key,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="flowNo != null">
+        #{flowNo,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qhh.bank.domain.pojo.HelloWorldPojo">
+    update ep_hello_world
+    <set>
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where flow_no = #{flowNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qhh.bank.domain.pojo.HelloWorldPojo">
+    update ep_hello_world
+    set key = #{key,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR}
+    where flow_no = #{flowNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

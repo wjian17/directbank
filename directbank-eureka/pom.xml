@@ -6,7 +6,7 @@
 
     <groupId>com.qhh.bank</groupId>
     <artifactId>directbank-eureka</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>directbank-eureka</name>
     <!-- FIXME change it to the project's website -->
@@ -15,7 +15,7 @@
     <parent>
         <groupId>com.qhh.bank</groupId>
         <artifactId>directbank</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>

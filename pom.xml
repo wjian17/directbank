@@ -7,13 +7,11 @@
     <groupId>com.qhh.bank</groupId>
     <artifactId>directbank</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>directbank-jpa</module>
         <module>directbank-eureka</module>
         <module>directbank-rest</module>
         <module>directbank-core</module>
-        <module>directbank-util</module>
         <module>directbank-db</module>
         <module>directbank-zuul</module>
     </modules>

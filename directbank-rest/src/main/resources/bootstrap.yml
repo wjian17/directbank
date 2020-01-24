@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: directbank-rest
+  http:
+    encoding: { charset: UTF-8, enable: true, force: true }
+  ## 数据源配置(此配置优先加载，导入的jar中可用注解注入对应的值)
+  datasource:
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      username: root
+      password: root
+    salver:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/mysql?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+      username: root
+      password: root
+
+## Mybatis 配置（持久层框架自己选择）
+mybatis:
+  config: classpath:mybatis-config.xml
+  master:
+    mapperLocations: classpath*:mapper/master/*.xml
+    basePackage: com.qhh.bank.mapper
+  salver:
+    mapperLocations: classpath*:mapper/salver/*.xml
+    basePackage: com.qhh.bank.mapper
+
+
+info:
+  component: directbank-rest
+  contact:
+    email: wjian17@grgbanking.com
+    phone: 18810078492

@@ -1,7 +1,7 @@
 
 ## Mybatis 配置（持久层框架自己选择）
 mybatis:
-  config: classpath:mybatis-config.xml
+  config: classpath:mybatis-config_bak.xml
   master:
     mapperLocations: classpath*:mapper/master/*.xml
     basePackage: com.qhh.bank.mapper
@@ -33,7 +33,7 @@ spring:
       username: root
       password: root
 logging:
-  config: classpath:logback.xml
+  config: classpath:logback_bak.xml
   level:
     com.qhh.bank: debug
 server:

@@ -21,11 +21,9 @@ public class MybatisDataSourceConfig {
 
     private static Logger logger = LoggerFactory.getLogger(MybatisDataSourceConfig.class);
 
+
     @Value("${mybatis.master.basePackage}")
     private String masterBasePackage;
-
-    @Value("${mybatis.salver.basePackage}")
-    private String salverBasePackage;
 
     @Bean(name = "mhikariConfig")
     @ConfigurationProperties(prefix = "spring.datasource.master")

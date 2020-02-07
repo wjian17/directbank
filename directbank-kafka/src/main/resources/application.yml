@@ -1,0 +1,46 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /directbank-kafka
+
+spring:
+  cloud:
+    instance-count: 1
+    instance-index: 0
+    stream:
+      kafka:
+        binder:
+          brokers: 192.168.199.127:9092,192.168.199.128:9092,192.168.199.129:9092
+          zk-nodes: 192.168.199.127:2181,192.168.199.128:2181,192.168.199.129:2181
+          auto-add-partitions: true
+          auto-create-topics: true
+          min-partition-count: 1
+      bindings:
+        output:
+          destination: topic
+          content-type: text/plain
+          producer:
+            partitionCount: 3
+        input:
+          destination: topic
+          content-type: text/plain
+          group: s1
+          consumer:
+            autoCommitOffset: false
+            concurrency: 1
+            partitioned: false
+
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    prefer-ip-address: true # 当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 # 指定自己的ip信息，不指定的话会自己寻找
+
+
+
+logging:
+  config: classpath:logback.xml
+  level:
+    com.qhh.bank: debug
